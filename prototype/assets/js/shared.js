@@ -46,6 +46,20 @@
   }
   Object.keys(PREF_DATA).forEach(renderChips);
 
+  /* ============================================================
+     LEGAL / POLICY SCREENS — START
+     Screens: screen-legal-list, screen-legal-doc (prototype/index.html)
+     Styles: "LEGAL / POLICY SCREENS" section in shared.css
+     Data: LEGAL_DOCS
+     Functions: renderLegalList(), openLegalDoc(id)
+     Entry points:
+       - toolbar #nav-legal-list -> showScreen('legal-list')
+       - screen-login ToS/Privacy links call openLegalDoc('tos'/'privacy')
+         directly — do not rename openLegalDoc without checking index.html
+     Note: renderLegalList() below runs immediately at script load (not
+       on demand). Keep this call in this position so #legal-list-body
+       already exists in the DOM when it runs.
+     ============================================================ */
   var LEGAL_DOCS = [
     {id:'privacy', title:'Privacy Policy', sections:[
       {h:'Information We Collect', p:'Describes the account, profile, and usage data collected when players and service providers use FIND PLAYPAL.'},
@@ -117,6 +131,7 @@
     showScreen('legal-doc');
   }
   renderLegalList();
+  /* LEGAL / POLICY SCREENS — END */
 
   /* ---------- app shell: icons ---------- */
   var ICONS = {

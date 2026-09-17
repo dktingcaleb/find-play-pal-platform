@@ -135,6 +135,7 @@
             <a onclick="showScreen('pref1')">創建賬戶</a>
           </div>
 
+          <!-- Legal entry point: opens screen-legal-doc directly via openLegalDoc(), bypassing screen-legal-list -->
           <div class="legal">
             登入后即代表您同意 FIND PLAY PAL
             <a onclick="openLegalDoc('tos')">服务条款</a>
@@ -204,6 +205,23 @@
         </div>
       </div>
 
+      <!-- ============================================================
+           LEGAL / POLICY SCREENS — START
+           Screens: screen-legal-list, screen-legal-doc
+           Data + render logic: LEGAL_DOCS, renderLegalList(), openLegalDoc()
+             (see prototype/assets/js/shared.js)
+           Legal-specific styles: prototype/assets/css/shared.css
+             (see "LEGAL / POLICY SCREENS" section)
+           Entry points:
+             - toolbar #nav-legal-list -> showScreen('legal-list')
+             - screen-login ToS/Privacy links -> openLegalDoc('tos'/'privacy')
+               (bypasses screen-legal-list, opens screen-legal-doc directly)
+           Back navigation (hardcoded, not origin-aware — preserve as-is):
+             - screen-legal-list back arrow -> showScreen('login')
+             - screen-legal-doc back arrow -> showScreen('legal-list')
+               (even when opened directly from Login)
+           ============================================================ -->
+
       <!-- LEGAL LIST -->
       <div class="screen pref-screen" id="screen-legal-list">
         <div class="pref-header legal-header">
@@ -225,6 +243,8 @@
         </div>
         <div class="pref-body" id="legal-doc-body"></div>
       </div>
+
+      <!-- LEGAL / POLICY SCREENS — END -->
 
       <!-- HOME -->
       <div class="screen app-screen" id="screen-home">
