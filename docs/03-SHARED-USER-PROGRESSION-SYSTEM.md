@@ -1,15 +1,18 @@
 # Find Playpal — Shared User Progression System
 
-**Status:** Early Draft  
-**Version:** 0.1  
-**Source:** `Level & Mana & HP & Rank & Royal.xlsx`  
+**Status:** Updated Early Master  
+**Version:** 0.2  
+**Sources:**  
+- `Level & Mana & HP & Rank & Royal.xlsx` — detailed calculations, candidate thresholds, formulas, and legacy/alternative plans  
+- `等级_贵族_段位系统.docx` — supplementary product explanation and current behavior clarification  
+
 **Module Type:** Shared Account Progression / Status System  
 **Applies To:** All Find Playpal users — both regular players and Playpals  
-**Purpose:** Define the current known shared user progression systems, including Account Level, EXP, Mana, Rank, Royal/Noble status, and Echelon 20.
+**Purpose:** Define the current shared user progression systems, including Account Level, EXP, Mana, Rank, Royal/Noble status, and Echelon 20.
 
 > Important: This is a **platform-wide user system**. A Playpal and a regular player both use the same underlying account progression unless a future rule explicitly creates a role-specific exception.
 
-> The source workbook contains multiple calculations, alternative plans, and some conflicting/unfinished data. This document preserves those differences instead of silently deciding which version is correct.
+> Source priority rule: when the supplementary product explanation explicitly clarifies a behavior that was previously ambiguous or presented as multiple alternatives in the workbook, the clarified product behavior is treated as the current rule. Detailed numerical calculations that are not clarified remain sourced from the workbook and may remain `TBD`, `REVIEW`, or `CONFLICT`.
 
 ---
 
@@ -58,6 +61,8 @@ They should not be treated as synonyms.
 
 Represents the user's general platform progression.
 
+The supplementary product explanation confirms that users increase Account Level **through completing tasks**.
+
 Primary progression resource:
 
 **EXP**
@@ -70,11 +75,23 @@ Current source range:
 
 ## 2.2 EXP
 
-EXP is earned through platform activity.
-
 EXP determines Account Level progression.
 
-This is primarily an **activity / participation progression system**, not a spending rank.
+The current product-level rule is:
+
+```text
+Complete Tasks
+→ Earn / Accumulate EXP
+→ Increase Account Level
+```
+
+The workbook contains activity-based EXP entries such as Chat, Attack, Defend, Party Room, Gift, and Order. These remain detailed EXP/task references.
+
+It is not yet fully defined whether every listed activity grants EXP directly or whether some activities grant EXP only through completion of a corresponding task.
+
+**Activity-to-task relationship: REVIEW**
+
+This remains primarily an **activity / participation progression system**, not a spending rank.
 
 ---
 
@@ -524,22 +541,36 @@ AI must not infer HP behavior from ordinary RPG conventions.
 
 # 11. Platform Rank System
 
-The workbook contains a separate Rank ladder based on spending / Blue Diamond consumption.
+The supplementary product explanation confirms that Platform Rank is a **cumulative spending progression system**.
+
+Users increase Rank through consumption related to:
+
+- Placing orders
+- Sending gifts
+
+The accumulated Rank score:
+
+- Does **not reset**
+- Does **not decrease**
+- Does **not cause rank demotion**
 
 This Rank system is distinct from LVL / EXP.
 
 Conceptually:
 
 ```text
-Activity
+Complete Tasks / Activity
 → EXP
 → Account Level
 
-Spending / Blue Diamond Consumption
-→ Rank
+Order Spending + Gift Spending
+→ Cumulative Rank Score
+→ Platform Rank
 ```
 
-The exact final Rank threshold model is not yet locked because the workbook contains multiple versions.
+Each time a user reaches a specified Rank milestone, the user receives the corresponding **one-time reward**.
+
+The exact Rank ladder, threshold values, score conversion, and reward values remain referenced to the workbook. Because the workbook contains multiple candidate models, those numerical details remain `CONFLICT / REVIEW` until a final model is explicitly selected.
 
 ---
 
@@ -724,9 +755,9 @@ They should not automatically become user-facing Rank rules until approved.
 
 # 16. Royal / Noble System
 
-The workbook contains a separate premium prestige system referred to as `Noble` / `Royal`.
+Royal / Noble is a separate premium prestige system based on **cumulative recharge**.
 
-The source contains the following Chinese status names:
+The supplementary product explanation confirms the current Chinese Royal / Noble hierarchy:
 
 1. 平民
 2. 军士
@@ -739,138 +770,254 @@ The source contains the following Chinese status names:
 9. 皇族
 10. 天子
 
-The workbook also contains English prestige labels such as:
+Royal / Noble is:
 
-- Sergeant
-- Knight
-- Viscount
-- Earl
-- Marquis
-- Duke
-- Royal
-- Emperor
-- Lord
+- Not Account Level
+- Not Platform Rank
+- Based on recharge / Noble progression
+- Permanently unlockable by reaching cumulative recharge requirements
+- Time-limited in terms of active privileges after the initial activation period
 
-However, their row alignment does not clearly establish a final approved one-to-one Chinese ↔ English mapping.
+The workbook also contains English labels such as Sergeant, Knight, Viscount, Earl, Marquis, Duke, Royal, Emperor, and Lord.
 
-**Translation mapping: REVIEW**
+A final one-to-one Chinese ↔ English naming table is still not explicitly confirmed.
 
-Do not infer the final mapping automatically.
+**English translation mapping: REVIEW**
 
 ---
 
-# 17. Royal / Noble Point Thresholds
+# 17. Current Royal / Noble Unlock Thresholds
 
-One source table contains:
+The supplementary product explanation provides the following current unlock thresholds:
 
-| Status | Noble / Recharge Points |
+| Royal / Noble Tier | Cumulative Recharge Requirement |
 |---|---:|
 | 平民 | 0 |
 | 军士 | 200 |
-| 骑士 | 2,000 |
-| 子爵 | 4,000 |
-| 伯爵 | 8,000 |
-| 侯爵 | 16,000 |
-| 公爵 | 32,000 |
-| 王族 | 64,000 |
-| 皇族 | 128,000 |
-| 天子 | 256,000 |
+| 骑士 | 3,000 |
+| 子爵 | 6,000 |
+| 伯爵 | 12,000 |
+| 侯爵 | 64,000 |
+| 公爵 | 128,000 |
+| 王族 | 256,000 |
+| 皇族 | 512,000 |
+| 天子 | 1,080,000 |
 
-The workbook later also contains business-model tables using larger values for some ranks.
+These values should be treated as the **current product thresholds** unless a later approved document changes them.
 
-Therefore these figures should remain source values rather than being silently treated as the final production threshold table.
+The older workbook table containing values such as `2,000 / 4,000 / 8,000 / 16,000 / 32,000 / 64,000 / 128,000 / 256,000` remains a **legacy / calculation reference** and should not override this clarified product table.
+
+**Status: CURRENT PRODUCT RULE**
+
+---
+
+# 18. Royal / Noble Active Benefits
+
+The supplementary product explanation defines benefits available while the corresponding Royal / Noble tier is active.
+
+## 平民
+
+No specific premium benefit is currently defined.
+
+## 军士 — 200
+
+- 贵族勋章
+- 每天 10 点贵族积分
+
+## 骑士 — 3,000
+
+Includes applicable previous benefits, plus:
+
+- 10 代金券
+- 开通特效
+- 贵族头框
+- 贵族聊天气泡
+
+## 子爵 — 6,000
+
+Includes applicable previous non-`代钻` benefits, plus:
+
+- 50 代钻
+- 贵族主题风格
+- 贵族礼物
+- 贵族弹幕
+- 贵族贴图 `(ver. ltr)`
+
+## 伯爵 — 12,000
+
+Includes applicable previous non-`代钻` benefits, plus:
+
+- 100 代钻
+- 上线通知
+- 日程金币奖励翻倍
+- 贵族身份开关
+- 贵族音波 `(ver. ltr)`
+
+## 侯爵 — 64,000
+
+Includes applicable previous non-`代钻` benefits, plus:
+
+- 500 代钻
+- 昵称变化
+- 访问隐身
+- 贵族装备 `(ver. ltr)`
+
+## 公爵 — 128,000
+
+Includes applicable previous non-`代钻` benefits, plus:
+
+- 1,000 代钻
+- 贵族入场特效
+- 防踢
+
+## 王族 — 256,000
+
+Includes applicable previous non-`代钻` benefits, plus:
+
+- 1,500 代钻
+- 进房隐身
+- 贵族喇叭
+
+## 皇族 — 512,000
+
+Includes applicable previous non-`代钻` benefits, plus:
+
+- 2,500 代钻
+- 双倍星尘兑换率
+- 排行榜隐身
+- 贵族攻击 / 防护技能
+
+## 天子 — 1,080,000
+
+Includes applicable previous non-`代钻` benefits, plus:
+
+- 5,000 代钻
+- 无敌时刻
+- 专属座驾
+- 天子点名
+
+## Benefit Terminology Review
+
+The source uses both:
+
+- `代金券`
+- `代钻`
+
+These terms should not be silently normalized until their intended relationship is confirmed.
+
+The source also uses `(ver. ltr)` on some future benefits. The exact meaning and release status should be confirmed before implementation.
 
 **Status: REVIEW**
 
 ---
 
-# 18. Royal / Noble — Plan A
+# 19. Current Royal / Noble Unlock & Activation Rule
 
-The workbook contains a rule set labelled `rules plan A`.
+The supplementary product explanation resolves the earlier Plan A / Plan B ambiguity in favor of a **Plan B-style unlock + activation model**.
 
-Current source rules:
+## 19.1 Unlock
 
-1. Every recharge produces an equivalent amount of Noble Points.
-2. Noble Points can accumulate for **60 days**.
-3. Reaching a required Noble Point amount grants the corresponding Noble rank.
-4. The first time a user reaches a rank, the user receives that rank's voucher.
-5. On the first day of each month, the user receives vouchers and exclusive gifts based on Noble rank.
-6. Exclusive gifts include a concept where:
-   - the recipient has a Noble supporter / backing list;
-   - the gift sender has an `avatar partner`.
-7. Noble recommendation is listed as a feature.
-8. If the user no longer maintains the required recharge points, or recharge points expire:
-   - the user drops **one rank**;
-   - the rank does not immediately reset to zero;
-   - continued inactivity causes continued monthly rank decline.
+Users accumulate recharge progress.
 
-Items not yet fully defined:
+When cumulative recharge reaches a Royal / Noble threshold:
 
-- exact voucher amount
-- exact exclusive gifts
-- supporter-list behavior
-- avatar partner behavior
-- recommendation behavior
-- exact downgrade date
-- exact timezone
-- grace period
+```text
+Threshold reached
+→ Royal / Noble tier unlocked
+```
 
-**Status: PLAN A / NOT YET SELECTED**
+Unlocked tiers remain available for later activation.
 
 ---
 
-# 19. Royal / Noble — Plan B
+## 19.2 First Activation
 
-The workbook contains a second rule set labelled `rules plan B`.
+The first time the user reaches at least:
 
-Current source rules:
+```text
+200
+```
 
-1. Every recharge produces an equivalent amount of Noble Points.
-2. Noble Points accumulate to determine Noble rank.
-3. After the first recharge, the rank receives a **30-day countdown**.
-4. When the countdown ends, the user must spend Diamonds to activate the rank again.
-5. Different ranks have different activation requirements.
-6. Reaching a rank unlocks its corresponding benefits and privileges.
-7. Noble Level itself does not reset.
-8. The prestige status can expire.
-9. Maximum activation duration is **30 days**.
-10. Every activation requires the corresponding amount of Blue Diamonds.
+and unlocks `军士` or above:
 
-The workbook contains example activation-cost calculations by rank.
-
-**Status: PLAN B / NOT YET SELECTED**
+- No additional Blue Diamond activation payment is required.
+- Royal / Noble privileges are automatically activated.
+- The first active period lasts **30 days**.
 
 ---
 
-# 20. Royal Plan Conflict
+## 19.3 Upgrading During the First 30 Days
 
-Plan A and Plan B represent different retention mechanics.
-
-### Plan A
+If the user unlocks a higher Royal / Noble tier while the current 30-day activation is still active:
 
 ```text
-Recharge Points
-→ 60-day accumulation
-→ Rank
-→ inactivity / expiration causes gradual monthly downgrade
+Higher tier unlocked
+→ Active tier upgrades
+→ Existing countdown continues
 ```
 
-### Plan B
+The 30-day countdown:
+
+**does not reset**
+
+when a higher tier is unlocked during that active period.
+
+---
+
+## 19.4 After the 30-Day Active Period
+
+After the active period expires:
+
+- The user keeps the Royal / Noble tiers they have already unlocked.
+- The user may choose to activate an unlocked Royal / Noble tier.
+- Activation requires spending the corresponding amount of **Blue Diamonds**.
+- Activation amount depends on tier.
+
+The exact Blue Diamond activation amounts remain referenced to the workbook.
+
+**Final activation-cost table: REVIEW / TO BE CONFIRMED FROM WORKBOOK**
+
+---
+
+## 19.5 Unlock vs Active Status
+
+The system should distinguish:
 
 ```text
-Recharge Points
-→ permanent achieved Noble Level
-→ 30-day active status
-→ Blue Diamond activation required to keep privileges active
+Royal / Noble Tier Unlocked
+≠
+Royal / Noble Privileges Active
 ```
 
-These are not the same mechanic.
+A user can retain an unlocked Royal / Noble level while its active privileges are expired.
 
-Until explicitly approved:
+Conceptually:
 
-**Do not merge Plan A and Plan B.**
+```text
+Cumulative Recharge
+→ Permanently unlock tier
 
-**Do not allow AI to select a preferred version.**
+Activation
+→ Temporarily enable tier privileges
+```
+
+---
+
+# 20. Legacy Royal Plan A
+
+The workbook also contains an older `Plan A` concept based on:
+
+- 60-day point accumulation
+- monthly maintenance
+- gradual rank downgrade
+
+The supplementary product explanation instead defines the 30-day activation model described above.
+
+Therefore:
+
+**Plan A is now treated as LEGACY / REFERENCE and is not the current product rule.**
+
+AI and designers must not combine Plan A downgrade mechanics with the current activation system unless a future approved decision explicitly reintroduces them.
 
 ---
 
@@ -897,9 +1044,11 @@ Current source requirements:
 3. Invitation only by Find Playpal / PlayPal Official.
 4. Only **20 people** will be invited every month.
 
-Because the English `Lord` label is not yet cleanly mapped to the Chinese Royal hierarchy in the workbook:
+The current clarified Chinese Royal hierarchy identifies `天子` as the highest normal Royal / Noble tier.
 
-**Exact required Chinese Royal tier: REVIEW**
+The Echelon 20 source uses the English label `Lord` as the prerequisite. It is likely intended to reference the top Royal tier, but the source does not explicitly confirm the final Chinese ↔ English mapping.
+
+**Whether `Lord = 天子`: REVIEW**
 
 ---
 
@@ -1207,21 +1356,63 @@ Examples include:
 
 ## 31.3 Royal Plan A vs Plan B
 
-Two different Royal-maintenance mechanics exist.
+The supplementary product explanation resolves the current product direction:
 
-**Status: CONFLICT / DECISION REQUIRED**
+```text
+Plan B-style unlock + 30-day activation
+= CURRENT
+
+Plan A 60-day accumulation + downgrade model
+= LEGACY / REFERENCE
+```
+
+**Status: RESOLVED**
 
 ---
 
-## 31.4 Royal English Translation
+## 31.4 Royal Threshold Version Conflict
 
-English prestige names do not clearly align row-by-row with the Chinese rank names.
+The supplementary product explanation provides the current threshold table:
+
+```text
+200 / 3k / 6k / 12k / 64k / 128k / 256k / 512k / 1.08m
+```
+
+Older threshold values in the workbook remain legacy/calculation references.
+
+**Status: RESOLVED FOR CURRENT PRODUCT RULE**
+
+---
+
+## 31.5 Royal English Translation
+
+English prestige names do not clearly align row-by-row with the clarified Chinese hierarchy.
 
 **Status: REVIEW**
 
 ---
 
-## 31.5 HP Missing
+## 31.6 Royal Benefit Terminology
+
+The supplementary source uses both `代金券` and `代钻`, and marks some benefits as `(ver. ltr)`.
+
+Their exact product definitions remain unclear.
+
+**Status: REVIEW**
+
+---
+
+## 31.7 Account Level Task / EXP Relationship
+
+The supplementary product explanation says Account Level increases through completing tasks, while the workbook lists multiple activity-based EXP sources.
+
+The exact implementation relationship between direct activity EXP and task completion remains to be documented.
+
+**Status: REVIEW**
+
+---
+
+## 31.8 HP Missing
 
 HP is part of the system name but its rules are not present.
 
@@ -1229,7 +1420,7 @@ HP is part of the system name but its rules are not present.
 
 ---
 
-## 31.6 Mana LVL 100 Exception
+## 31.9 Mana LVL 100 Exception
 
 The source adds the per-level Mana increase twice at LVL 100.
 
@@ -1237,7 +1428,7 @@ The source adds the per-level Mana increase twice at LVL 100.
 
 ---
 
-## 31.7 Heal / Buff EXP Wording
+## 31.10 Heal / Buff EXP Wording
 
 The source uses `defend` wording in the Heal and Buff EXP notes.
 
@@ -1245,7 +1436,7 @@ The source uses `defend` wording in the Heal and Buff EXP notes.
 
 ---
 
-## 31.8 Order EXP Recipient
+## 31.11 Order EXP Recipient
 
 It is unclear whether order EXP applies to:
 
@@ -1268,21 +1459,27 @@ When an AI assistant works on this progression system:
 4. Do not confuse Account LVL with Platform Rank.
 5. Do not confuse Platform Rank with Royal / Noble.
 6. Do not treat Echelon 20 as a normal level.
-7. Do not select Rank threshold model A or B automatically.
-8. Do not select Royal Plan A or Plan B automatically.
-9. Do not invent HP rules.
-10. Do not silently correct the LVL 100 Mana formula.
-11. Do not silently correct Heal / Buff wording.
-12. Do not infer missing English / Chinese prestige translations.
-13. Report conflicts before modifying product logic.
-14. Visual redesign must not alter progression formulas without explicit product approval.
-15. Existing Figma screens are references unless marked `APPROVED`.
+7. Account Level is a 100-level task/EXP progression system; do not replace it with spending progression.
+8. Platform Rank is increased through cumulative Order / Gift spending and **does not reset or derank**.
+9. Do not select a final Rank threshold model automatically; the workbook still contains conflicting numerical versions.
+10. Follow the current Royal / Noble **unlock + 30-day activation** model.
+11. Treat Royal Plan A as legacy/reference; do not merge its downgrade mechanics into the current Royal system.
+12. Use the clarified Royal unlock thresholds unless a later approved document supersedes them.
+13. Do not invent Blue Diamond activation costs when the exact tier activation table has not been confirmed.
+14. Do not normalize `代金券` and `代钻` into one benefit without approval.
+15. Do not invent HP rules.
+16. Do not silently correct the LVL 100 Mana formula.
+17. Do not silently correct Heal / Buff wording.
+18. Do not infer missing English / Chinese prestige translations.
+19. Report conflicts before modifying product logic.
+20. Visual redesign must not alter progression formulas, thresholds, or entitlement mechanics without explicit product approval.
+21. Existing Figma screens are references unless marked `APPROVED`.
 
 ---
 
 # 33. Future Documentation Needed
 
-The following still require product decisions:
+The following still require product decisions or clarification:
 
 - Exact purpose of Mana
 - HP mechanics
@@ -1291,39 +1488,55 @@ The following still require product decisions:
 - Heal mechanics
 - Buff mechanics
 - Status effects
+- Relationship between direct activity EXP and task completion
 - EXP anti-abuse rules
 - EXP reset rules
 - Final daily EXP cap
 - Order EXP recipient
 - Final Rank ladder
-- Final Rank thresholds
-- Rank benefits
+- Final Rank thresholds / score conversion
+- Exact one-time Rank rewards
 - Rank visibility
-- Final Royal plan
-- Royal point expiry
-- Royal benefits
-- Royal vouchers
-- Royal exclusive gifts
-- Royal recommendation
-- Echelon 20 qualification mapping
+- Exact Blue Diamond activation cost for each Royal / Noble tier
+- Meaning and lifecycle of `贵族积分`
+- Definition of `代金券` vs `代钻`
+- Whether Royal benefit allowances are per activation, monthly, daily, or one-time
+- Final status of `(ver. ltr)` Royal benefits
+- Final English names for Royal / Noble tiers
+- Royal privilege expiration UI
+- Royal reactivation flow
+- Echelon 20 qualification mapping (`Lord` vs `天子`)
 - Echelon 20 renewal / removal rules
 - Echelon 20 monthly number allocation
 - Echelon 20 theme selection
 - Profile display hierarchy
-- Notifications for level-up / rank-up
+- Notifications for level-up / rank-up / Royal unlock / Royal expiration
 - Admin tools
 - Analytics events
 
-All remain `TBD` until explicitly decided.
+All remain `TBD` or `REVIEW` until explicitly decided.
 
 ---
 
 # 34. Current Document Status
 
-**EARLY MASTER**
+**UPDATED EARLY MASTER — v0.2**
 
-This document records the current progression concepts from the existing workbook plus the confirmed rule that the system applies to **both regular players and Playpals**.
+This document combines the detailed workbook with the later supplementary product explanation.
 
-The original workbook remains the source reference for detailed calculations while unresolved alternatives remain under review.
+Confirmed updates in v0.2 include:
+
+- Account Level remains a shared 100-level system and is described at product level as progressing through tasks / EXP.
+- Platform Rank is confirmed as cumulative Order / Gift spending progression.
+- Platform Rank does not reset and does not derank.
+- Rank milestones provide one-time rewards.
+- The clarified Royal / Noble unlock thresholds are now treated as the current product thresholds.
+- Royal / Noble follows the 30-day unlock / activation model.
+- First Royal unlock activates automatically without additional Blue Diamond payment.
+- Upgrading Royal tier during the active 30-day period does not reset the countdown.
+- After expiration, users may reactivate an unlocked Royal tier using Blue Diamonds.
+- Royal Plan A is retained only as legacy/reference.
+
+The workbook remains the source reference for formulas, detailed numerical calculations, activation-cost modeling, and unresolved Rank threshold alternatives.
 
 Future approved decisions should update this master rather than being scattered across Figma, spreadsheets, chat history, or AI-generated prototypes.
