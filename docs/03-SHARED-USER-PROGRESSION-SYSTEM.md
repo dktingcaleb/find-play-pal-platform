@@ -1,7 +1,7 @@
 # Find Playpal — Shared User Progression System
 
 **Status:** Updated Early Master  
-**Version:** 0.2  
+**Version:** 0.3  
 **Sources:**  
 - `Level & Mana & HP & Rank & Royal.xlsx` — detailed calculations, candidate thresholds, formulas, and legacy/alternative plans  
 - `等级_贵族_段位系统.docx` — supplementary product explanation and current behavior clarification  
@@ -571,6 +571,45 @@ Order Spending + Gift Spending
 Each time a user reaches a specified Rank milestone, the user receives the corresponding **one-time reward**.
 
 The exact Rank ladder, threshold values, score conversion, and reward values remain referenced to the workbook. Because the workbook contains multiple candidate models, those numerical details remain `CONFLICT / REVIEW` until a final model is explicitly selected.
+
+---
+
+## 11.1 Approved Numeric Rank Model — Interpretation A
+
+**Status:** APPROVED  
+**Decision Reference:** DD-027 (see `16-DESIGN-DECISIONS.md`)
+
+The numeric Platform Rank value referenced by `17-VISUAL-ASSET-MAP.md` (a scale of 1–100) and the named-tier Rank ladder (e.g. 青銅I, 白銀II) are approved as:
+
+```text
+Platform Rank (1–100)
+and
+Named-Tier Rank Ladder
+=
+two representations of the SAME progression system
+```
+
+A user's current named tier **maps into** a corresponding position on the numeric 1–100 Rank scale. They are **not** two separate progression systems, and **not** two independent parallel layers.
+
+**Current Platform Rank range (APPROVED):**
+
+```text
+Minimum: Rank 1
+Maximum: Rank 100
+```
+
+There are currently no Platform Ranks above 100, and there is no current plan to extend beyond Rank 100. If the product later expands the range, that will be a separate future product decision — not something to assume or implement now.
+
+**Implementation principle (for future implementation, not applied to the prototype now):** the value `100` represents the current product maximum, not an incidental number. Future implementation should avoid scattering hard-coded `100` values throughout the code, and should instead reference the maximum from one centralized Rank configuration/constant where practical, so a future range change (if ever approved) does not require hunting down repeated literals.
+
+This decision resolves only that *relationship* — that the two are one system, not two — and the confirmed 1–100 range. It does **not** resolve:
+
+- **Which tier ladder is final** — the choice between the Detailed Candidate ladder (§12/§13), the Alternative Model (§14), or any other candidate remains `CONFLICT` (see §31.1).
+- **The exact tier-to-number mapping/allocation** — whether one named tier corresponds to one Rank number, multiple Rank numbers, or a numeric range is not yet defined and remains `TBD`, and depends on the final ladder length being settled first.
+
+AI and implementers must not select a final ladder or invent a tier-to-number mapping formula to close these gaps. They remain open per §31.1 and §33.
+
+The current prototype's `RANK_DATA` array (`prototype/assets/js/shared.js`) is a third, non-canonical variant of the tier ladder — distinct from both the Detailed Candidate (§12/§13) and the Alternative Model (§14) — and must not be treated as the final ladder.
 
 ---
 
@@ -1340,6 +1379,8 @@ Multiple Rank spend models exist.
 
 **Status: CONFLICT**
 
+Note: the *relationship* between the named-tier ladder and the numeric 1–100 Platform Rank scale has been separately resolved — see §11.1 (Interpretation A, APPROVED). This entry remains open only for the choice of final tier ladder, names, and thresholds.
+
 ---
 
 ## 31.2 Rank Naming Conflict
@@ -1449,6 +1490,20 @@ It is unclear whether order EXP applies to:
 
 ---
 
+## 31.12 Platform Rank Numbering Model — Interpretation A
+
+The relationship between the named-tier Rank ladder and the numeric 1–100 Platform Rank scale used by `17-VISUAL-ASSET-MAP.md` was previously undefined.
+
+Interpretation A (the numeric 1–100 scale and the named-tier ladder are the same progression system, with a user's tier mapping into the numeric scale) is now approved. See §11.1.
+
+The current Platform Rank range (minimum 1, maximum 100, no ranks above 100, no current plan to extend) is also confirmed as an approved current rule. See §11.1.
+
+The exact tier-to-number mapping/allocation is not defined by this approval and remains `TBD`.
+
+**Status: RESOLVED (same-system relationship only) — final tier ladder selection remains open (§31.1), and the tier-to-number mapping/allocation remains `TBD`**
+
+---
+
 # 32. AI Design / Coding Rules
 
 When an AI assistant works on this progression system:
@@ -1495,6 +1550,7 @@ The following still require product decisions or clarification:
 - Order EXP recipient
 - Final Rank ladder
 - Final Rank thresholds / score conversion
+- Final ladder-to-100-slot numbering allocation (once the final ladder is chosen — see §11.1)
 - Exact one-time Rank rewards
 - Rank visibility
 - Exact Blue Diamond activation cost for each Royal / Noble tier
@@ -1520,7 +1576,7 @@ All remain `TBD` or `REVIEW` until explicitly decided.
 
 # 34. Current Document Status
 
-**UPDATED EARLY MASTER — v0.2**
+**UPDATED EARLY MASTER — v0.3**
 
 This document combines the detailed workbook with the later supplementary product explanation.
 
@@ -1536,6 +1592,12 @@ Confirmed updates in v0.2 include:
 - Upgrading Royal tier during the active 30-day period does not reset the countdown.
 - After expiration, users may reactivate an unlocked Royal tier using Blue Diamonds.
 - Royal Plan A is retained only as legacy/reference.
+
+Confirmed updates in v0.3 include:
+
+- The numeric Platform Rank scale (1–100) used by `17-VISUAL-ASSET-MAP.md` and the named-tier Rank ladder are approved as two representations of the same progression system, with a user's named tier mapping into the numeric scale (Interpretation A — see §11.1, DD-027).
+- Platform Rank's current range is confirmed: minimum Rank 1, maximum Rank 100, with no current plan to extend beyond 100 (§11.1, DD-027).
+- This resolves only that same-system *relationship* and the confirmed range; the final tier ladder itself (§12/§13 vs §14) and the exact tier-to-number mapping/allocation remain open (§31.1, §31.12, §33).
 
 The workbook remains the source reference for formulas, detailed numerical calculations, activation-cost modeling, and unresolved Rank threshold alternatives.
 

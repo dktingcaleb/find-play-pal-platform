@@ -1,7 +1,7 @@
 # Find Playpal — Visual Asset Map
 
 **Status:** APPROVED FOUNDATION / Active Asset Registry  
-**Version:** 0.1  
+**Version:** 0.2  
 **Purpose:** Define approved visual assets, file naming, mapping, and source-of-truth rules for Find Playpal.
 
 > This document records which visual assets are approved for use in the current prototype and future implementation.
@@ -209,6 +209,12 @@ Those remain governed by:
 03-SHARED-USER-PROGRESSION-SYSTEM.md
 ```
 
+The number in this mapping (1–100) refers specifically to the **approved numeric Platform Rank model** defined in `03-SHARED-USER-PROGRESSION-SYSTEM.md` §11.1 (Interpretation A, DD-027): the numeric 1–100 scale and the named-tier Rank ladder are the same progression system, with a user's current named tier mapping into a corresponding position on the numeric scale.
+
+That approval resolves only that *same-system relationship*. It does **not** select a final tier ladder, and it does not define the exact tier-to-number mapping/allocation (whether one named tier corresponds to one Rank number, multiple Rank numbers, or a numeric range) — both remain open (`03-SHARED-USER-PROGRESSION-SYSTEM.md` §31.1, `CONFLICT`, and §31.12, `TBD`). This visual mapping must not be treated as usable in implementation until both are resolved, and must not be used to silently resolve that conflict.
+
+The current Platform Rank range is confirmed as 1–100 (minimum Rank 1, maximum Rank 100, no Ranks above 100) — see `03-SHARED-USER-PROGRESSION-SYSTEM.md` §11.1. The four approved assets above exactly cover this confirmed range in four 25-wide bands; no fifth asset or "above 100" behavior is defined or should be assumed.
+
 If Rank-system product rules are still `REVIEW` or `CONFLICT`, this visual mapping must not be used to silently resolve those product-rule conflicts.
 
 ---
@@ -230,6 +236,16 @@ AI and programmers should reference these files rather than:
 - replacing it with emoji,
 - inventing another rank icon,
 - generating a visually similar substitute.
+
+These assets are approved **only** for the Platform Rank system defined in `03-SHARED-USER-PROGRESSION-SYSTEM.md`. They must **not** be used for:
+
+- Noble / Royal tiers (`03-SHARED-USER-PROGRESSION-SYSTEM.md` §16, target folder `prototype/assets/images/noble/` — see §8 below),
+- game-specific ranks,
+- Account Level,
+- any activity/event leaderboard (e.g. an Activity screen's ranking list),
+- or any other progression system.
+
+Platform Rank must not be confused with these systems (`03-SHARED-USER-PROGRESSION-SYSTEM.md` §32, rules 3–5).
 
 ---
 
@@ -412,4 +428,6 @@ rank-076-100.png
 
 ---
 
-**Document Status: APPROVED FOUNDATION — v0.1**
+**Document Status: APPROVED FOUNDATION — v0.2**
+
+v0.2 change: clarified that the Rank mapping's 1–100 numbering refers to the approved numeric Platform Rank model in `03-SHARED-USER-PROGRESSION-SYSTEM.md` §11.1 (Interpretation A, DD-027), and made explicit that these assets must not be used for Noble/Royal, game-specific ranks, Account Level, or event leaderboards.

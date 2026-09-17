@@ -855,6 +855,64 @@ Audit reports describe analysis; they should not be mistaken for approved curren
 
 ---
 
+# DD-027 — Platform Rank Numeric Model: Interpretation A Approved
+
+**Date:** 2026-09-17  
+**Status:** APPROVED  
+**Area:** Platform Rank / Shared User Progression System
+
+## Decision
+
+The numeric Platform Rank scale (1–100) referenced by `17-VISUAL-ASSET-MAP.md` and the named-tier Rank ladder are approved as:
+
+```text
+Platform Rank (1–100)
+and
+Named-Tier Rank Ladder
+=
+two representations of the SAME progression system
+```
+
+A user's current named tier **maps into** a corresponding position on the numeric 1–100 Rank scale. They are **not** two separate progression systems, and **not** two independent parallel layers.
+
+The current Platform Rank range is also confirmed: minimum Rank 1, maximum Rank 100, with no Ranks above 100 and no current plan to extend beyond 100. Extending the range in the future would be a separate product decision.
+
+This decision resolves that *relationship* (one system, not two) and the confirmed 1–100 range. It does **not** select a final tier ladder, and it does not define the exact tier-to-number mapping/allocation (whether one named tier corresponds to one Rank number, multiple Rank numbers, or a numeric range). Both remain open.
+
+## Reason
+
+Before approving Platform Rank visual asset integration (`17-VISUAL-ASSET-MAP.md`), the relationship between the existing named-tier Rank ladder (`03-SHARED-USER-PROGRESSION-SYSTEM.md` §12/§13/§14) and the numeric 1–100 Rank scale used by the approved artwork mapping was undefined. An audit identified four possible interpretations:
+
+```text
+A — Same system; tier maps into the Rank 1-100 scale (exact mapping TBD)   (APPROVED)
+B — Same system, derived spend score
+C — Two layers of one system (tier + sub-number shown together)
+D — Genuinely different, undocumented system
+```
+
+Interpretation A was selected.
+
+## Affected Files / Areas
+
+```text
+docs/03-SHARED-USER-PROGRESSION-SYSTEM.md (new §11.1, updated §31.1, new §31.12, §33, version 0.2 → 0.3)
+docs/17-VISUAL-ASSET-MAP.md (§5, §6 clarified, version 0.1 → 0.2)
+```
+
+## Supersedes
+
+Nothing is superseded. This decision narrows a previously undefined relationship; it does not replace or invalidate the existing named-tier ladder candidates (§12/§13 Detailed Candidate, §14 Alternative Model), which remain open `CONFLICT` items pending a separate decision on which ladder is final.
+
+## Notes
+
+The prototype's current `RANK_DATA` array in `prototype/assets/js/shared.js` is a third, non-canonical tier-ladder variant, distinct from both documented candidates, and must not be treated as the final ladder.
+
+Implementation principle (for future implementation, not applied now): Rank 100 is the current product maximum, not an incidental number. Future code should avoid scattering hard-coded `100` values and should instead reference the maximum from one centralized Rank configuration/constant where practical.
+
+This decision does not authorize Rank artwork integration into the prototype — the final ladder selection and tier-to-number allocation questions remain open prerequisites.
+
+---
+
 # 3. Future Decision Examples
 
 Add a new decision entry when approving changes such as:
