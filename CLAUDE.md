@@ -591,7 +591,19 @@ Big redesign
 
 ---
 
-# 27. Final Operating Rule
+# 27. References Directory
+
+```text
+references/
+```
+
+contains non-authoritative reference material only. It may include historical source files, Figma references, screenshots, or other supporting material.
+
+Content under `references/` must not override Product Masters, approved design docs, or the current approved prototype baseline.
+
+---
+
+# 28. Final Operating Rule
 
 ```text
 Read first.

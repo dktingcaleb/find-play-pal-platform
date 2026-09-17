@@ -364,9 +364,14 @@ Known flow:
 ```text
 Home
 → Quick Order
-→ Activity
 → Main Navigation
 ```
+
+**REVIEW — Home → Activity navigation:**
+
+Home currently displays activity-style banners/notices, but no verified click path from Home into Activity Detail exists in the current prototype (`renderHome()` in `shared.js` contains no `openActivityDetail` call, and the banner/notice markup has no `onclick`). The only confirmed prototype entry point into Activity Detail is `Channel → Activity`.
+
+Whether Home should link directly to Activity Detail remains a future product/design decision. Do not assume or implement this edge until it is explicitly approved.
 
 Some recommendation content must later align with:
 
@@ -1332,8 +1337,8 @@ Splash
 
 Main App
 ├── Home
-│   ├── Quick Order
-│   └── Activity
+│   └── Quick Order
+│       (Activity: not currently wired from Home — see §8.1 REVIEW note)
 │
 ├── Party
 │   ├── Party Room
