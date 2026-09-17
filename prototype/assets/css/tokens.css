@@ -1,0 +1,153 @@
+:root {
+  /* =========================================================
+     1. Primitive colors
+     Exact values from the current prototype.
+     ========================================================= */
+
+  --fp-white: #fff;
+
+  --fp-ink-900: #1B1330;
+  --fp-charcoal-900: #2C2A28;
+  --fp-brown-700: #5B5347;
+  --fp-brown-500: #8A8477;
+  --fp-brown-300: #B4AFA6;
+
+  --fp-warm-100: #F1EEE9;
+  --fp-warm-150: #EDEAE1;
+  --fp-warm-200: #E3DFD3;
+
+  --fp-coral-500: #E8544A;
+  --fp-pink-500: #F2536B;
+  --fp-purple-500: #7B5EC7;
+  --fp-blue-500: #4A90D9;
+
+  /* Existing legacy palette — intentionally preserved */
+  --fp-legacy-ink: #3E2A1E;
+  --fp-legacy-cream: #F7F3EA;
+  --fp-legacy-tan: #C6874F;
+  --fp-legacy-tan-soft: #E4C7A8;
+  --fp-legacy-dark: #2C2118;
+  --fp-legacy-muted: #A79C8C;
+  --fp-legacy-toolbar: #1E1A16;
+
+  /* =========================================================
+     2. Semantic colors
+     Available for future component migration.
+     Phase 1 shared.css primarily uses primitive tokens to avoid
+     assigning incorrect semantics to legacy selectors.
+     ========================================================= */
+
+  --color-surface-primary: var(--fp-white);
+  --color-surface-soft: var(--fp-warm-150);
+  --color-surface-field: var(--fp-warm-100);
+  --color-border-soft: var(--fp-warm-100);
+  --color-border-default: var(--fp-warm-200);
+
+  --color-text-primary: var(--fp-ink-900);
+  --color-text-body: var(--fp-brown-700);
+  --color-text-secondary: var(--fp-brown-500);
+  --color-text-muted: var(--fp-brown-300);
+
+  --color-action-coral: var(--fp-coral-500);
+  --color-interactive-selected: var(--fp-purple-500);
+  --color-info: var(--fp-blue-500);
+  --color-link: var(--fp-blue-500);
+
+  --gradient-action-coral:
+    linear-gradient(90deg, var(--fp-pink-500), var(--fp-coral-500));
+
+  /* =========================================================
+     3. Typography
+     ========================================================= */
+
+  --font-family-sans:
+    -apple-system,
+    BlinkMacSystemFont,
+    "PingFang SC",
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  --font-size-11: 11px;
+  --font-size-11-5: 11.5px;
+  --font-size-12: 12px;
+  --font-size-12-5: 12.5px;
+  --font-size-13: 13px;
+  --font-size-13-5: 13.5px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-24: 24px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* =========================================================
+     4. Spacing
+     Exact-value primitive scale. Existing exceptions remain.
+     ========================================================= */
+
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+  --space-9: 18px;
+  --space-10: 20px;
+  --space-11: 22px;
+  --space-12: 24px;
+  --space-13: 26px;
+
+  /* =========================================================
+     5. Radius
+     ========================================================= */
+
+  --radius-3: 3px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-16: 16px;
+  --radius-18: 18px;
+  --radius-20: 20px;
+  --radius-22: 22px;
+  --radius-circle: 50%;
+
+  /* =========================================================
+     6. Shadows
+     ========================================================= */
+
+  --shadow-frame:
+    0 1px 3px rgba(0,0,0,0.08),
+    0 16px 40px rgba(0,0,0,0.14);
+
+  --shadow-blue-ring: 0 0 0 1px #4A90D9;
+  --shadow-subtle: 0 1px 2px rgba(0,0,0,.2);
+  --shadow-floating: 0 4px 16px rgba(0,0,0,.18);
+
+  /* =========================================================
+     7. Compatibility aliases
+     Keep the original prototype variables working.
+     Do not remove until all selectors have been migrated.
+     ========================================================= */
+
+  --ink: var(--fp-legacy-ink);
+  --cream: var(--fp-legacy-cream);
+  --tan: var(--fp-legacy-tan);
+  --tan-soft: var(--fp-legacy-tan-soft);
+  --dark-btn: var(--fp-legacy-dark);
+  --link: var(--fp-legacy-tan);
+  --muted: var(--fp-legacy-muted);
+  --toolbar-bg: var(--fp-legacy-toolbar);
+}
