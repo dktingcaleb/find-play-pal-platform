@@ -7,6 +7,35 @@
     if(navBtn) navBtn.classList.add('active');
   }
 
+  /* ============================================================
+     SHARED COMPONENT — BackButton (PageHeader "Leading" slot)
+     Scope: prototype/index.html elements marked data-fp-icon="back"
+       (26 instances as of this extraction: 22 inside .pref-header /
+       .pref-header.legal-header "PageHeader" screens, plus
+       .post-header (Post Moment) and .pp-header2 (Player Profile),
+       which reuse this icon markup only — their header shells stay
+       separate from PageHeader).
+     Responsibility: render the shared back-arrow icon only.
+     Navigation is NOT decided here. Every element keeps its own
+     exact pre-existing onclick attribute untouched (a hardcoded
+     showScreen() target, a function reference such as
+     backFromPicker() / closeFunSettings() / closeAlbum() /
+     tryLeavePost(), or an origin-variable read such as
+     showScreen(playerProfileOrigin) / showScreen(quickOrderOrigin) /
+     showScreen(activityOrigin)). Do not add navigation logic here.
+     Excluded on purpose: .app-topbar (no back button), Party Room's
+     .pr-host (custom header, no back button), and the Placeholder
+     screen's .back-btn (different component family — a labelled CTA
+     button, not this icon affordance).
+     ============================================================ */
+  var BACK_ARROW_SVG = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3L5 9l6 6" stroke="#3E2A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function initBackButtons(){
+    document.querySelectorAll('[data-fp-icon="back"]').forEach(function(el){
+      el.innerHTML = BACK_ARROW_SVG;
+    });
+  }
+  initBackButtons();
+
   var PREF_DATA = {
     pref1: {max:10, items:["御姐","大叔","奶萌小哥","马来西亚","中文","英文","大姨妈","堡xxxx","xxx","xxxx","xxxx","xxxx","xxx","xxxx","xxxx"]},
     pref2: {max:3, items:["交新朋友","打发时间","找游戏玩家","赚钱","娱乐","心灵成长","第二空间","尝鲜","新体验","寻找另一半","曝光率","xxx","xxxxx","xxxx","xxxx"]},
